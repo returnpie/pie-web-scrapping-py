@@ -20,4 +20,6 @@ for page in pages[:-1]:
     spans.append(int(page.string))
     # print(page.find("span"))
 
+max_page = pages[-1]
+
 print(spans)
