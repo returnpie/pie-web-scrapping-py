@@ -37,14 +37,14 @@ def extract_job(html):
     location = html.find("div", {"class": "recJobLoc"})["data-rc-loc"]
     job_id = html["data-jk"]
 
-    return {'title': title, 'company': company, 'location': location, 'link': f"https://www.indeed.com/viewjob?jk={job_id}"}
+    return {'title': title, 'company': company, 'location': location, 'apply_link': f"https://www.indeed.com/viewjob?jk={job_id}"}
 
 
 def extract_jobs(last_page):
     jobs = []
 
     for page in range(last_page):
-        print(f"scrapping page {page}")
+        print(f"scrapping indeed: Page: {page}")
         job_list = requests.get(f"{URL}&start={page*LIMIT}")
         soup = BeautifulSoup(job_list.text, 'html.parser')
         results = soup.find_all("div", {"class": "jobsearch-SerpJobCard"})
